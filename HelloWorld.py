@@ -11,7 +11,8 @@ driver = None
 # Check Chrome version to download appropriate binaries
 # Add binaries to directory (drivers) and specify executable path in Chrome()
 if platform.system() == "Windows":
-    driver = webdriver.Chrome(executable_path='drivers/chromedriver_win32/chromedriver.exe')  # optional argument, if not specified will search path.
+    driver = webdriver.Chrome(
+        executable_path='drivers/chromedriver_win32/chromedriver.exe')  # optional argument, if not specified will search path.
 elif platform.system() == 'Linux':
     driver = webdriver.Chrome(executable_path='drivers/chromedriver_win32/chromedriver.exe')
 elif platform.system() == 'Darwin':
@@ -25,12 +26,20 @@ url = 'https://' + address
 if driver:
     try:
         driver.get(url)
-        # time.sleep(5) # let the user actually see something!
+
+        ## Sample test
+        # time.sleep(5)  # let the user actually see something!
         # search_box = driver.find_element_by_name('q')
         # search_box.send_keys('chromedriver')
         # search_box.submit()
         # time.sleep(5) # let the user actually see something!
-        html = driver.page_source
-        print(webHelper.save_source(address, html))
+
+        ## Save source
+        # html = driver.page_source
+        # print(webHelper.save_source(address, html))
+
+        ## Get Element fonts
+        webHelper.get_element_fonts(driver, "*")
+
     finally:
         driver.quit()
