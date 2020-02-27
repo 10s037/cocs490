@@ -1,6 +1,7 @@
 import time
 import platform
 from selenium import webdriver
+from helpers import webHelper
 
 # Use platform.system() to check platform string for conditionals below
 # print(platform.system())
@@ -18,13 +19,18 @@ elif platform.system() == 'Darwin':
 else:
     driver = webdriver.Chrome()
 
+# driver = None
+address = 'www.towson.edu'
+url = 'https://' + address
 if driver:
     try:
-        driver.get('http://www.google.com/')
-        time.sleep(5) # let the user actually see something!
-        search_box = driver.find_element_by_name('q')
-        search_box.send_keys('chromedriver')
-        search_box.submit()
-        time.sleep(5) # let the user actually see something!
+        driver.get(url)
+        # time.sleep(5) # let the user actually see something!
+        # search_box = driver.find_element_by_name('q')
+        # search_box.send_keys('chromedriver')
+        # search_box.submit()
+        # time.sleep(5) # let the user actually see something!
+        html = driver.page_source
+        print(webHelper.save_source(address, html))
     finally:
         driver.quit()
