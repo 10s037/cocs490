@@ -32,3 +32,18 @@ def get_element_fonts(driver, selector):
     fonts = list(set(fonts))
     print(fonts)
     print("Number of fonts (including fallbacks): ", len(fonts))
+
+
+def get_inner_html(driver):
+    time.sleep(5)
+    elements = driver.find_elements_by_css_selector("*")
+    text = ""
+    for i, e in enumerate(elements):
+        try:
+            if e.value_of_css_property('display') != "none":
+                inner = driver.execute_script("return arguments[0].textContent", e)
+                text = text + " " + inner
+        except StaleElementReferenceException as e:
+            print(e)
+    print(text)
+
