@@ -16,7 +16,7 @@ if platform.system() == "Windows":
 elif platform.system() == 'Linux':
     driver = webdriver.Chrome(executable_path='drivers/chromedriver_win32/chromedriver.exe')
 elif platform.system() == 'Darwin':
-    driver = webdriver.Chrome(executable_path='drivers/chromedriver_win32/chromedriver.exe')
+    driver = webdriver.Chrome(executable_path='drivers/chromedriver')
 else:
     driver = webdriver.Chrome()
 
