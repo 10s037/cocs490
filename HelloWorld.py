@@ -3,7 +3,7 @@ from helpers import webHelper
 
 driver = webHelper.initiate_driver()
 # driver = None
-address = "www.w3schools.com/jsref/tryit.asp?filename=tryjsref_form_reset"  #'www.towson.edu'
+address ='www.towson.edu'
 url = 'https://' + address
 if driver:
     try:
